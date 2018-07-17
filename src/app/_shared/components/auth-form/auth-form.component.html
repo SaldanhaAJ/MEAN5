@@ -1,0 +1,31 @@
+<div>
+  <form (ngSubmit)="handleSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+    <ng-content select="h3"></ng-content>
+    <div>
+      <label>
+        Email address
+        <input type="text" name="email" ngModel #email>
+      </label>
+    </div>
+    <div>
+      <label>
+        Password:
+        <input type="password" name="password" ngModel>
+      </label>
+    </div>
+    <ng-content select="app-auth-remember-me"></ng-content>
+    <!-- WOrking of Child Content -->
+    <div *ngIf="ChildContentChecked">
+      Static: You will be logged in for 30 days
+    </div>
+<!--
+    <div *ngIf="ChildContentChecked">
+      <app-auth-message></app-auth-message>
+    </div>
+  -->
+  <app-auth-message [style.display]="(ChildContentChecked ? 'inherit' : 'none')"></app-auth-message>
+  <div>
+      <ng-content select="button"></ng-content>
+    </div>
+  </form>
+</div>

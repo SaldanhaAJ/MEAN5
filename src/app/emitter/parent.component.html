@@ -1,0 +1,7 @@
+Parent
+{{ parentCount}}
+<app-child 
+[count]="parentCount" 
+[init]="parentCount"
+(change)="childChange($event)"
+></app-child>

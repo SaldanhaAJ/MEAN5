@@ -1,0 +1,3 @@
+(function (routeController) {
+
+})(module.exports)

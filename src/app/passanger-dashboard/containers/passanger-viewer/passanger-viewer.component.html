@@ -1,0 +1,68 @@
+
+
+<ul>
+  <li *ngFor = "let add of addresses.items">    
+    {{i}} {{add.firstname}}
+    </li>
+</ul>
+
+<app-passanger-list
+[items]="element_data"
+>
+</app-passanger-list>
+
+
+<container-view></container-view>
+<hr/>
+<h2>
+  Same Component, app-auth-form, with different content projected in where @ContentChild and 
+  @ContentChildren are used to access the project content.
+
+  @ViewChild is used to set the value of a child component; @ViewChild combined with ElementRef is used to access 
+  the form elements and set them dynamically
+</h2>
+
+<div id="authDiv">
+<!-- 
+  Same Component with different content projected in 
+-->
+
+<app-auth-form
+  (submitted)="createUser($event)"
+  >
+  <h3>Create account</h3>
+  <button type="submit">Join Us</button>
+</app-auth-form>
+
+<app-auth-form
+  (submitted)="loginUser($event)"
+  >
+  <h3>Login</h3>
+  <button type="submit">Login</button>
+  <app-auth-remember-me
+  (checked)="rememberUser($event)"
+  ></app-auth-remember-me>
+</app-auth-form>
+
+</div>
+
+
+<hr/>
+<h2>
+Gets a sepecific passenger (hard coded to 4), and allows update of the passenger information to the 
+MongoDB
+</h2>
+
+{{ passanger[0] | json}}
+
+<!--
+  Since the api was returning  an array the [0] needed to be sent in
+-->
+
+<app-passanger-form
+[detail]="passanger[0]"
+(update) ="OnUpdate($event)"
+>
+
+
+</app-passanger-form>

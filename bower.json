@@ -1,0 +1,11 @@
+{
+  "name": "mean3",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "underscore": "^1.8.3",
+    "bootstrap": "^3.3.7"
+  }
+}

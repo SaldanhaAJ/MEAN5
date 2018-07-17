@@ -1,0 +1,111 @@
+
+<app-address-search></app-address-search>
+
+<h2>app-address-list</h2>
+
+<ul>
+  <li *ngFor="let i of addresses">
+
+    <span class="badge">{{i._id}}</span> {{i.firstname}} 
+    
+    <button class="delete" title="delete address"
+    (click)="delete(i)">x</button>
+  </li>
+</ul>
+
+
+<div>
+  <mat-table #table  [dataSource]="dataSource2">
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef>First Name </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.firstname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef>Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.lastname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef>Address </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.address}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef>City </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.city}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+  </mat-table>
+  <mat-paginator #paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+</div>
+
+
+
+
+<div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter text to filter by"  [(ngModel)]='lstFilter' value="">
+    </mat-form-field>
+</div>
+
+
+
+<div>
+  <mat-table #table  [dataSource]="dataSource">
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef>First Name </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.firstname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef>Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.lastname}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef>Address </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.address}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef>City </mat-header-cell>
+      <mat-cell *matCellDef="let address"> {{address.city}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+  </mat-table>
+  <mat-paginator #paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+</div>
+
+<!--
+<mat-input-container>
+  List length:
+  <input matInput [(ngModel)]="length">
+</mat-input-container>
+
+<mat-input-container>
+  Page size:
+  <input matInput [(ngModel)]="pageSize">
+</mat-input-container>
+<mat-input-container>
+  Page size options:
+  <input matInput
+         [ngModel]="pageSizeOptions"
+         (ngModelChange)="setPageSizeOptions($event)">
+</mat-input-container>
+
+<mat-paginator [length]="length"
+[pageSize]="pageSize"
+[pageSizeOptions]="pageSizeOptions"
+(page)="onPaginateChange($event)">
+</mat-paginator>
+-->
+
+
+<app-address-form></app-address-form>

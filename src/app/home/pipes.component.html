@@ -1,0 +1,42 @@
+<h2>Pipes</h2>
+
+
+<h3></h3> 
+<ul>
+  <li *ngFor = "let pass of passangers; let i = index">
+    <span class="status" 
+    [ngClass]="{
+    'checked-in' : pass.checkedIn,
+    'checked-out' : !pass.checkedIn }"
+    ></span>
+    {{i}} {{pass.fullname}}
+ 
+      {{ pass.checkedInDate? ( pass.checkedInDate | date | uppercase): 'Not Checked In' }}
+      <div class="children">
+          Children: {{pass.children?.length || 0}}
+        </div>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor = "let pass of passangers; let i = index">
+      <span class="status" 
+      [ngClass]="{
+      'checked-in' : pass.checkedIn,
+      'checked-out' : !pass.checkedIn }"
+      ></span>
+      {{i}} {{pass.fullname}}
+
+       
+        <span *ngIf = "pass.checkedInDate">
+            Checked In Date: {{pass.checkedInDate | date: ' MMM d y'}}  
+        </span>
+        <span *ngIf = !pass.checkedInDate>
+            Not Checked In 
+        </span>
+        <div *ngIf = "pass.children?.length" class="children">
+            Children: {{pass.children?.length}}
+          </div>
+  
+      </li>
+  </ul>

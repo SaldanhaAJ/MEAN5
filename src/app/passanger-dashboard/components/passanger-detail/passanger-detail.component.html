@@ -1,0 +1,27 @@
+<span class="status" 
+[ngClass]="{
+'checked-in' : detail.checkedIn,
+'checked-out' : !detail.checkedIn }"
+></span>
+<div *ngIf="editMode">
+    <input type="text" 
+    [value]="detail.fullname" 
+    #fullname 
+    (input)='onSaveFullName(fullname.value)'
+    >
+</div>
+<div *ngIf="!editMode">
+    {{detail.fullname}}
+</div>
+<div>
+
+    {{ detail.checkedInDate? ( detail.checkedInDate | date | uppercase): 'Not Checked In' }}
+    <div class="children">
+        Children: {{detail.children?.length || 0}}
+      </div>
+</div>
+
+<div>
+    <button (click)="toggleEdit()">{{editMode? 'Done' : 'Edit'}}</button>
+    <button (click)="removeItem()">Remove</button>
+</div>

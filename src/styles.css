@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink1.css";
+
+@import "assets/css/app1.css";
+
+
+/* MatTab */
+[_nghost-c5] {
+    display: inline-block !important;
+    width: 100%;
+}
+.mat-tab-link-active,
+.mat-tab-label-active {
+    background-color: #5EADB0;
+    color: #D5FEFF;
+    border: 1px solid #6B7F7F;
+    font-weight: bold;
+}
+.mat-tab-link,
+.mat-tab-label {
+    line-height: 30px !important;
+    height: 30px !important;
+    min-width: 100px !important;
+    border: 1px solid #7e7e7e;
+}
+.tabContentContainer {
+    border: 1px solid #aaaaaa;
+    background: #ffffff 50% 50% repeat-x;
+}
+
+
+/* Used by overlays/FilePreviewOverlay Config */
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing.dark-backdrop {
+    background: #000;
+    opacity: 0.85 !important;
+  }
+
+  /*
+  .body-content {
+    overflow: auto;
+  }
+  
+  html, body {
+    height:100%;
+    min-height:100vh;
+    margin:0;
+  }
+  .mat-sidenav-content {
+    flex: 1;
+  }
+  */

@@ -1,0 +1,40 @@
+
+<h2>app-item-list</h2>
+
+<p>
+
+  {{item.name}} 
+  
+
+{{temp}}
+</p>
+
+  <ul>
+    <li *ngFor="let i of items">
+
+      <span class="badge">{{i.id}}</span> {{i.name}} 
+      
+      <a href="/detail/{{i.id}}">
+        <span class="badge">{{i.id}}</span> {{i.name}} 
+      </a>
+      <button class="delete" title="delete hero"
+      (click)="delete(h)">x</button>
+    </li>
+  </ul>
+
+<!-- We use the async pipe to automatically subscribe/unsubscribe to our observable -->
+<!-- 
+  *ngIf="(items2$ | async).length"
+-->
+<ul>
+  <li class="user" *ngFor="let i of items2$ | async" (click)="ItemClick(i)">
+    <span class="badge">{{i.id}}</span> {{i.name}} 
+  </li>
+</ul>
+
+<div *ngIf="clickedItem">
+
+  {{clickedItem.name}}
+</div>
+
+<app-item-detail [item]="clickedItem"></app-item-detail>

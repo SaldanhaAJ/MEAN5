@@ -1,0 +1,33 @@
+
+
+
+
+
+
+<div mat-dialog aria-label="Editar" class="dialog-95">
+
+      <mat-toolbar color="primary">
+        <button class="mat-button"  >
+            <mat-icon class="material-icons toolbar-link-icon">arrow_back</mat-icon>
+          </button>
+        <span>App Name</span>
+        <span class="example-spacer"></span>
+        <button class="mat-button" [matMenuTriggerFor]="appMenu"><mat-icon>menu</mat-icon> Menu</button>
+      </mat-toolbar>
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item> Settings </button>
+        <button mat-menu-item> Contact </button>
+      </mat-menu>  
+    
+
+<div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+</div>  

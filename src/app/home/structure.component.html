@@ -1,0 +1,53 @@
+
+<h2>Structure Management with ngIf, ngFor, ngClass, ngStyle</h2>
+
+<h3>*ngFor</h3>
+<ul>
+  <li *ngFor = "let pass of passangers; let i = index">
+   {{i}} {{pass.fullname}}
+  </li>
+</ul>
+
+
+<h3>Dynamic Styling - property binding - for single additional class name</h3>
+<ul>
+  <li *ngFor = "let pass of passangers; let i = index">
+    <span class="status" 
+    [class.checked-in]="pass.checkedIn"
+    ></span>
+    {{i}} {{pass.fullname}}
+  </li>
+</ul>
+
+
+<h3>Dynamic Styling - property binding - for multiple additional class names </h3>
+<ul>
+  <li *ngFor = "let pass of passangers; let i = index">
+    <span class="status" 
+    [ngClass]="{
+    'checked-in' : pass.checkedIn,
+    'checked-out' : !pass.checkedIn }"
+    ></span>
+    {{i}} {{pass.fullname}}
+  </li>
+</ul>
+
+<h3>Dynamic Styling - property binding - style - single</h3>
+<ul>
+  <li *ngFor = "let pass of passangers; let i = index">
+    <span class="status" 
+    [style.backgroundColor]="(pass.checkedIn ? 'green' : '#c0392b')"></span>
+    {{i}} {{pass.fullname}}
+  </li>
+</ul>
+
+<h3>Dynamic Styling - property binding - ngStyle - multiple styling elements</h3>
+<ul>
+  <li *ngFor = "let pass of passangers; let i = index">
+    <span class="status" 
+    [ngStyle]="{
+      backgroundColor : (pass.checkedIn ? 'green' : '#c0392b')
+    }"></span>
+    {{i}} {{pass.fullname}}
+  </li>
+</ul>

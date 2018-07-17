@@ -1,0 +1,82 @@
+<!--
+<div >
+  <mat-toolbar color="primary" class="fixed_toolbar">
+    <span>App Name</span>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>menu</mat-icon> Menu</button>
+  </mat-toolbar>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item> Settings </button>
+    <button mat-menu-item> Contact </button>
+  </mat-menu>  
+  
+
+  <nav mat-tab-nav-bar class="fixed_nav">
+      <a mat-tab-link
+         *ngFor="let routeLink of routeLinks; let i = index;"
+         [routerLink]="routeLink.link"
+         routerLinkActive="mat-tab-link-active"
+         #rla="routerLinkActive"
+         [active]="activeLinkIndex === i"
+         (click)="activeLinkIndex = i"
+         [routerLinkActiveOptions]="{exact: true}"
+      >
+          {{routeLink.label}}
+      </a>
+  </nav>
+  <div class="route_position1">
+    <router-outlet></router-outlet>
+  </div>
+  
+</div>
+
+-->
+
+<!-- Fixed Header/Side Nav 
+-->
+
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;">
+  <mat-sidenav-container #sidenav style="height:100%;width:100%;">
+    <mat-sidenav mode="over" #sidenav style="min-width:220px;">
+      <p>Sidenav Content</p>
+      </mat-sidenav>
+    <mat-toolbar color="primary" style="min-height:64px;">
+      <span>
+          <button style="background-color:transparent;border-style:none;cursor:pointer;" (click)="sidenav.open()">
+              <i class="material-icons toolbar-link-icon" style="color:white;">menu</i>
+          </button>
+      </span>
+      <span>Fixed Header Example</span>
+
+    </mat-toolbar>
+    
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link
+         *ngFor="let routeLink of routeLinks; let i = index;"
+         [routerLink]="routeLink.link"
+         routerLinkActive="mat-tab-link-active"
+         #rla="routerLinkActive"
+         [active]="activeLinkIndex === i"
+         (click)="activeLinkIndex = i"
+         [routerLinkActiveOptions]="{exact: true}"
+      >
+          {{routeLink.label}}
+      </a>
+    </nav>
+
+    <div class="inner-sidenav-content">
+      <div style="padding-top:2em;padding-bottom:2em;margin-left:20px">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-container>
+</div>
+
+
+
+<!--
+<app-home></app-home>
+
+<app-item-list></app-item-list>
+<app-address-form></app-address-form>
+-->

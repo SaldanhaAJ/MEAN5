@@ -1,0 +1,100 @@
+
+<form (ngSubmit)="handleSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+  {{detail | json}}
+  {{detail?.fullname}}
+
+  <input 
+  type="text"
+  name="_id"
+  [ngModel] ="detail?._id"
+  required
+  #_id="ngModel"
+  >
+  <div>
+    Name:
+    <input 
+      type="text"
+      name="fullname"
+      [ngModel] ="detail?.fullname"
+      required
+      #fullname="ngModel"
+      >
+  </div>
+  <div *ngIf="fullname.errors?.required && fullname.dirty" class="error">
+    {{fullname.errors | json}}
+  </div>
+  <div>
+    ID:
+    <input 
+      type="number"
+      name="id"
+      [ngModel] ="detail?.id"
+      required
+      minlength="0"
+      #id="ngModel"
+      >
+  </div>
+  <div>
+    {{id.errors | json}}
+  </div>
+  <div>
+    Checked In:
+    <label>
+      <input type="radio"
+      name="checkedIn"
+      [value]="true"
+      [ngModel]="detail?.checkedIn"
+      (ngModelChange)="toggleCheckIn($event)"
+      >Yes
+    </label>
+    <label>
+      <input type="radio"
+      name="checkedIn"
+      [value]="false"
+      [ngModel]="detail?.checkedIn"
+      (ngModelChange)="toggleCheckIn($event)"
+      >No
+
+    </label>
+  </div>
+
+  <div *ngIf="form.value.checkedIn">
+      Check In Date:
+    <input 
+      type="number"
+      name="checkInDate"
+      [ngModel] ="detail?.checkedInDate">
+  </div>
+
+
+  <div>
+    Luggage
+    <select
+      name="baggage"
+      [ngModel]="detail?.baggage"
+      >
+      <option *ngFor="let item of baggage"
+        [value] ="item.key"
+        [selected]="item.key === detail?.baggage"
+
+      >{{item.value}}</option>
+    </select>
+  </div>
+<div>
+
+  {{form.value |  json}}
+</div>
+<div>
+    Valid : {{form.valid |  json}}
+</div>
+<div>
+      Invalid : {{form.invalid |  json}}
+</div>
+<div>
+  <button [disabled]="form.invalid">
+    Update Passanger
+  </button>
+</div>
+
+
+</form>

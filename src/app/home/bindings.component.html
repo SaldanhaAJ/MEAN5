@@ -1,0 +1,89 @@
+
+<h2>Property Binding</h2>
+
+<div [innerHtml]="title"></div>
+
+Image:
+<img [src]="logo"/>
+
+Input 
+<input type="text" [value]="name">
+<div [innerHtml]="name"></div>
+
+
+<h2>Event Binding</h2>
+<ul>
+  <li>
+    <a href="https://angular.io/guide/user-input">User Input</a>
+  </li>
+
+  <a href="https://angular.io/guide/template-syntax#ref-vars">Template #ref</a>
+</ul>
+<hr>
+
+<button (click)="handleButtonClick()">Clear Name</button>
+<input type="text" 
+[value]="name1"
+(blur)="handlBlur($event)"
+(focus)="handleFocus($event)"
+(input)="handleInput($event)"
+(keyup)="handleKeyUp($event)"
+>
+<div [innerHtml]="name1"></div>
+<div>{{keyupValues}}</div>
+<hr>
+
+<h3>#ref</h3>
+
+
+
+<hr>
+<input type="text" 
+#inputRef
+[value]="name2"
+(keyup)="handleKeyUpViaRef(inputRef.value)"
+>
+<div [innerHtml]="name2"></div>
+<div>{{keyupValues2}}</div>
+
+<hr>
+<p>
+  Via the view
+</p>
+
+<input type="text" 
+#inputRef3
+(keyup)="0"
+>
+<div>{{inputRef3.value}}</div>
+<hr>
+<p>
+  Adding an item via blur, keyup.enter and add button
+</p>
+  
+<input
+#inputRef4
+(keyup.enter)="addValue(inputRef4.value)"
+(blur)="addValue(inputRef4.value);inputRef4.value=''"
+>
+<button (click)="addValue(inputRef4.value)">Add</button>
+
+<ul>
+  <li *ngFor="let collection of collection4">{{collection}}</li>
+</ul>
+
+<h2>Two Way Binding</h2>
+
+<h3>One way data binding that listens for a change</h3>
+<input type="text" 
+[ngModel]="name5"
+(ngModelChange)="handleChange($event)"
+>
+<div>{{name5}}</div>
+
+
+<h3>Two way binding</h3>
+<input type="text" 
+[(ngModel)]="name6"
+>
+<div>{{name6}}</div>

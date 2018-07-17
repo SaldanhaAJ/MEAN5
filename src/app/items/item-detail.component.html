@@ -1,0 +1,14 @@
+<h2>app-item-detail</h2>
+<div *ngIf="item">
+
+  {{item.name}}
+  <div>
+    <label>
+      Name:
+      <input [(ngModel)]="item.name" placeholder="name" />
+    </label>
+
+  </div>
+  <button (click)="save(item)">Save</button>
+  <button (click)="goBack()">go back</button>
+</div>

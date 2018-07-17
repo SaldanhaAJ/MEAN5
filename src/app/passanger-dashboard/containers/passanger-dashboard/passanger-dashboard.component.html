@@ -1,0 +1,23 @@
+
+<ul>
+    <li *ngFor = "let pass of passangers">
+      <span class="status" 
+      [ngClass]="{
+      'checked-in' : pass.checkedIn,
+      'checked-out' : !pass.checkedIn }"
+      ></span>
+      {{i}} {{pass.fullname}}
+      </li>
+  </ul>
+
+<app-passanger-count 
+  [items]="passangers"
+  ></app-passanger-count>
+
+<app-passanger-detail
+*ngFor = "let pass of passangers "
+[detail]="pass"
+(remove)="handleRemove($event)"
+(edit)="handleEdit($event)"
+></app-passanger-detail>
+
